@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Budget Clair — Cours de gestion de finances personnelles</title>
+<meta name="description" content="Cours particuliers de gestion de finances personnelles à distance. Budget, épargne, investissement, sans jargon.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:   '#1C2B22',
+          paper: '#F3F5EF',
+          moss:  '#3F5A48',
+          gold:  '#C79A3E',
+          line:  '#D9DCCF',
+        },
+        fontFamily: {
+          display: ['"Fraunces"', 'serif'],
+          body:    ['"Work Sans"', 'sans-serif'],
+          mono:    ['"IBM Plex Mono"', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Work Sans', sans-serif; }
+  .font-display { font-family: 'Fraunces', serif; }
+  .font-mono { font-family: 'IBM Plex Mono', monospace; font-variant-numeric: tabular-nums; }
+  .ledger-row { border-bottom: 1px solid #D9DCCF; }
+</style>
+</head>
+
+<body class="bg-paper text-ink antialiased">
+
+<!-- NAV -->
+<header class="border-b border-line">
+  <nav class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="#" class="font-display text-xl tracking-tight">Budget <span class="text-moss">Clair</span></a>
+    <div class="hidden md:flex items-center gap-8 text-sm">
+      <a href="#programme" class="hover:text-moss transition-colors">Programme</a>
+      <a href="#methode" class="hover:text-moss transition-colors">Méthode</a>
+      <a href="#tarifs" class="hover:text-moss transition-colors">Tarifs</a>
+      <a href="#contact" class="hover:text-moss transition-colors">Contact</a>
+    </div>
+    <a href="#contact" class="text-sm font-medium bg-ink text-paper px-4 py-2 rounded-full hover:bg-moss transition-colors">
+      Premier échange gratuit
+    </a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="max-w-6xl mx-auto px-6 pt-16 pb-20 grid md:grid-cols-2 gap-14 items-center">
+  <div>
+    <p class="font-mono text-xs uppercase tracking-widest text-moss mb-4">Cours particuliers en visio</p>
+    <h1 class="font-display text-4xl md:text-5xl leading-[1.1] mb-6">
+      Voyez enfin<br> où va votre argent.
+    </h1>
+    <p class="text-base md:text-lg text-ink/70 mb-8 max-w-md">
+      Des séances individuelles pour reprendre la main sur votre budget, votre épargne et vos projets —
+      sans jargon, à votre rythme.
+    </p>
+    <div class="flex flex-wrap gap-4">
+      <a href="#contact" class="bg-gold text-ink font-medium px-6 py-3 rounded-full hover:bg-ink hover:text-paper transition-colors">
+        Réserver mon échange gratuit
+      </a>
+      <a href="#methode" class="border border-ink px-6 py-3 rounded-full hover:bg-ink hover:text-paper transition-colors">
+        Voir la méthode
+      </a>
+    </div>
+  </div>
+
+  <!-- INTERACTIVE MINI SIMULATOR -->
+  <div x-data="{
+        revenus: 2200,
+        depenses: 1750,
+        get reste() { return this.revenus - this.depenses },
+        get pct() { return Math.max(0, Math.min(100, (this.reste / (this.revenus || 1)) * 100)) }
+      }"
+      class="bg-white border border-line rounded-2xl p-8 shadow-[0_1px_0_0_#D9DCCF]">
+    <p class="font-mono text-xs uppercase tracking-widest text-ink/50 mb-6">Simulateur — reste à vivre</p>
+
+    <div class="space-y-6">
+      <div>
+        <div class="flex justify-between text-sm mb-2">
+          <label for="revenus">Revenus mensuels</label>
+          <span class="font-mono" x-text="revenus + ' €'"></span>
+        </div>
+        <input id="revenus" type="range" min="800" max="6000" step="50" x-model.number="revenus"
+               class="w-full accent-moss">
+      </div>
+
+      <div>
+        <div class="flex justify-between text-sm mb-2">
+          <label for="depenses">Dépenses mensuelles</label>
+          <span class="font-mono" x-text="depenses + ' €'"></span>
+        </div>
+        <input id="depenses" type="range" min="500" max="6000" step="50" x-model.number="depenses"
+               class="w-full accent-moss">
+      </div>
+    </div>
+
+    <div class="mt-8 pt-6 ledger-row">
+      <div class="flex justify-between items-baseline">
+        <span class="text-sm text-ink/60">Reste à vivre</span>
+        <span class="font-mono text-3xl"
+              :class="reste >= 0 ? 'text-moss' : 'text-red-700'"
+              x-text="(reste >= 0 ? '+' : '') + reste + ' €'"></span>
+      </div>
+      <div class="mt-3 h-1.5 w-full bg-line rounded-full overflow-hidden">
+        <div class="h-full bg-moss transition-all duration-300" :style="`width: ${pct}%`"></div>
+      </div>
+    </div>
+
+    <p class="text-xs text-ink/50 mt-5">
+      Un premier repère — on affine ensemble ce que ce chiffre veut dire pour vous.
+    </p>
+  </div>
+</section>
+
+<!-- METHODE -->
+<section id="methode" class="bg-white border-y border-line">
+  <div class="max-w-6xl mx-auto px-6 py-20">
+    <h2 class="font-display text-3xl mb-12">Comment se déroule un accompagnement</h2>
+    <div class="grid md:grid-cols-3 gap-10">
+      <div>
+        <span class="font-mono text-sm text-gold">01</span>
+        <h3 class="font-display text-xl mt-3 mb-2">Échange gratuit</h3>
+        <p class="text-sm text-ink/70">15 minutes pour comprendre votre situation et vos objectifs, sans engagement.</p>
+      </div>
+      <div>
+        <span class="font-mono text-sm text-gold">02</span>
+        <h3 class="font-display text-xl mt-3 mb-2">Diagnostic</h3>
+        <p class="text-sm text-ink/70">On pose à plat votre budget réel : entrées, sorties, dettes, marges de manœuvre.</p>
+      </div>
+      <div>
+        <span class="font-mono text-sm text-gold">03</span>
+        <h3 class="font-display text-xl mt-3 mb-2">Plan d'action</h3>
+        <p class="text-sm text-ink/70">Des étapes concrètes et un suivi séance après séance, à votre allure.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMME -->
+<section id="programme" class="max-w-6xl mx-auto px-6 py-20">
+  <h2 class="font-display text-3xl mb-12">Ce que l'on peut travailler ensemble</h2>
+  <div class="grid sm:grid-cols-2 gap-6">
+
+    <div class="border border-line rounded-xl p-6 bg-white">
+      <h3 class="font-display text-lg mb-2">Budget &amp; épargne</h3>
+      <p class="text-sm text-ink/70">Mettre en place un budget qui tient vraiment, et un fonds de sécurité adapté à votre vie.</p>
+    </div>
+
+    <div class="border border-line rounded-xl p-6 bg-white">
+      <h3 class="font-display text-lg mb-2">Premiers pas en investissement</h3>
+      <p class="text-sm text-ink/70">Comprendre PEA, assurance-vie, SCPI — les bases, sans promesse de rendement miracle.</p>
+    </div>
+
+    <div class="border border-line rounded-xl p-6 bg-white">
+      <h3 class="font-display text-lg mb-2">Sortir du surendettement</h3>
+      <p class="text-sm text-ink/70">Prioriser les dettes, négocier, retrouver une gestion saine étape par étape.</p>
+    </div>
+
+    <div class="border border-line rounded-xl p-6 bg-white">
+      <h3 class="font-display text-lg mb-2">Optimisation fiscale</h3>
+      <p class="text-sm text-ink/70">Comprendre les leviers fiscaux qui s'appliquent réellement à votre situation.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- TARIFS -->
+<section id="tarifs" class="bg-white border-y border-line">
+  <div class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10">
+
+    <div class="border border-line rounded-xl p-8">
+      <p class="font-mono text-xs uppercase tracking-widest text-ink/50 mb-4">Séance à l'unité</p>
+      <p class="font-display text-4xl mb-4">20 €</p>
+      <p class="text-sm text-ink/70 mb-6">Une séance de 45 min en visio.</p>
+      <a href="#contact" class="inline-block border border-ink px-5 py-2.5 rounded-full text-sm hover:bg-ink hover:text-paper transition-colors">Réserver</a>
+    </div>
+
+    <div class="border-2 border-gold rounded-xl p-8 relative">
+      <p class="font-mono text-xs uppercase tracking-widest text-gold mb-4">Forfait 4 séances</p>
+      <p class="font-display text-4xl mb-4">70 €</p>
+      <p class="text-sm text-ink/70 mb-6">Pour un suivi dans la durée, avec ajustements entre les séances.</p>
+      <a href="#contact" class="inline-block bg-gold px-5 py-2.5 rounded-full text-sm hover:bg-ink hover:text-paper transition-colors">Réserver</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="max-w-6xl mx-auto px-6 py-20">
+  <div class="max-w-xl">
+    <h2 class="font-display text-3xl mb-4">On en parle ?</h2>
+    <p class="text-ink/70 mb-8">
+      Premier échange de 30 minutes, gratuit et sans engagement. Secteur Ain (Valromey et environs) ou à distance.
+    </p>
+ 
+    <form
+      x-data="{ status: 'idle' }"
+      @submit.prevent="
+        status = 'sending';
+        fetch($el.action, {
+          method: 'POST',
+          body: new FormData($el),
+          headers: { 'Accept': 'application/json' }
+        }).then(r => { status = r.ok ? 'sent' : 'error' })
+          .catch(() => status = 'error')
+      "
+      action="https://formspree.io/f/VOTRE_ID_FORMSPREE"
+      method="POST"
+      class="space-y-4">
+ 
+      <div>
+        <label class="block text-sm mb-1" for="nom">Nom</label>
+        <input id="nom" name="nom" type="text" required class="w-full border border-line rounded-lg px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-moss">
+      </div>
+      <div>
+        <label class="block text-sm mb-1" for="email">Email</label>
+        <input id="email" name="email" type="email" required class="w-full border border-line rounded-lg px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-moss">
+      </div>
+      <div>
+        <label class="block text-sm mb-1" for="message">Votre situation en quelques mots</label>
+        <textarea id="message" name="message" rows="4" class="w-full border border-line rounded-lg px-4 py-2.5 bg-white focus:outline-none focus:ring-2 focus:ring-moss"></textarea>
+      </div>
+ 
+      <button type="submit" x-show="status !== 'sent'" :disabled="status === 'sending'"
+        class="bg-ink text-paper px-6 py-3 rounded-full hover:bg-moss transition-colors disabled:opacity-50">
+        <span x-text="status === 'sending' ? 'Envoi en cours…' : 'Envoyer ma demande'"></span>
+      </button>
+ 
+      <p x-show="status === 'sent'" x-cloak class="text-moss font-medium pt-2">
+        Merci — je reviens vers vous rapidement.
+      </p>
+      <p x-show="status === 'error'" x-cloak class="text-red-700 text-sm pt-2">
+        Un problème est survenu. Réessayez.
+      </p>
+    </form>
+ 
+    <p class="text-xs text-ink/40 mt-6">
+      Formulaire branché sur <span class="font-mono">Formspree</span> — remplace
+      <span class="font-mono">https://formspree.io/f/xdaqkrae</span> par l'ID de ton formulaire une fois créé sur
+      <span class="font-mono">formspree.io</span>.
+    </p>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="border-t border-line">
+  <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col sm:flex-row justify-between gap-4 text-sm text-ink/50">
+    <span>Budget Clair — Gestion de finances personnelles</span>
+  </div>
+</footer>
+
+</body>
+</html>
