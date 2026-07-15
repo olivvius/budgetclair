@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outils — Budget Clair</title>
+<meta name="description" content="Outil de budget mensuel à télécharger.">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink:   '#1C2B22',
+          paper: '#F3F5EF',
+          moss:  '#3F5A48',
+          gold:  '#C79A3E',
+          line:  '#D9DCCF',
+        },
+        fontFamily: {
+          display: ['"Fraunces"', 'serif'],
+          body:    ['"Work Sans"', 'sans-serif'],
+          mono:    ['"IBM Plex Mono"', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Work Sans', sans-serif; }
+  .font-display { font-family: 'Fraunces', serif; }
+  .font-mono { font-family: 'IBM Plex Mono', monospace; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+
+<body class="bg-paper text-ink antialiased">
+
+<!-- NAV -->
+<header class="border-b border-line">
+  <nav class="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
+    <a href="index.html" class="font-display text-xl tracking-tight">Budget <span class="text-moss">Clair</span></a>
+    <div class="flex items-center gap-8 text-sm">
+      <a href="index.html#programme" class="hover:text-moss transition-colors">Programme</a>
+      <a href="index.html#methode" class="hover:text-moss transition-colors">Méthode</a>
+      <a href="index.html#tarifs" class="hover:text-moss transition-colors">Tarifs</a>
+      <a href="index.html#contact" class="hover:text-moss transition-colors">Contact</a>
+    </div>
+    <a href="index.html#contact" class="text-sm font-medium bg-ink text-paper px-4 py-2 rounded-full hover:bg-moss transition-colors">
+      Premier échange gratuit
+    </a>
+  </nav>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="max-w-4xl mx-auto px-6 py-16">
+  
+  <div class="mb-12">
+    <h1 class="font-display text-3xl md:text-4xl mb-4">Outils</h1>
+    <p class="text-lg text-ink/70">
+      Des ressources pratiques pour vous accompagner dans votre gestion budgétaire.
+    </p>
+  </div>
+
+  <!-- BUDGET MENSUEL CARD -->
+  <div class="bg-white border border-line rounded-2xl p-8 shadow-[0_1px_0_0_#D9DCCF]">
+    
+    <div class="flex items-start gap-4 mb-6">
+      <div class="w-12 h-12 rounded-full bg-moss/10 flex items-center justify-center flex-shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-moss" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      </div>
+      <div>
+        <h2 class="font-display text-xl mb-2">Budget-mensuel.xlsx</h2>
+        <p class="text-sm text-ink/60 mb-4">Fichier Excel • 15 Ko</p>
+      </div>
+    </div>
+
+    <div class="prose prose-sm max-w-none mb-8">
+      <p class="text-ink/80 mb-4">
+        Ce fichier vous aide à construire une vision mensuelle claire de votre budget. 
+        Il est conçu pour être simple et efficace.
+      </p>
+      
+      <div class="bg-paper border border-line rounded-lg p-5 mb-4">
+        <h3 class="font-display text-base mb-3 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gold" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+          </svg>
+          Comment remplir ce fichier ?
+        </h3>
+        <ul class="list-disc list-inside space-y-2 text-sm text-ink/70">
+          <li><strong class="text-ink">Lissez vos dépenses annuelles</strong> : pour chaque dépense qui ne survient pas tous les mois (assurances, impôts, vacances, etc.), divisez le montant annuel par 12 et inscrivez ce montant mensuel.</li>
+          <li><strong class="text-ink">Soyez régulier</strong> : remplissez ce fichier chaque mois pour suivre l'évolution de votre budget.</li>
+          <li><strong class="text-ink">Adaptez</strong> : ajustez les montants au fil du temps selon votre réalité.</li>
+        </ul>
+      </div>
+
+      <p class="text-sm text-ink/60 italic">
+        Exemple : si votre assurance auto coûte 600 € par an, inscrivez 50 € par mois (600 ÷ 12). 
+        Cette méthode vous permet de lisser l'impact de ces dépenses et de mieux anticiper.
+      </p>
+    </div>
+
+    <a href="Budget-mensuel.xlsx" download class="inline-flex items-center gap-3 bg-gold text-ink font-medium px-6 py-3 rounded-full hover:bg-ink hover:text-paper transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+      </svg>
+      Télécharger le fichier
+    </a>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="border-t border-line">
+  <div class="max-w-6xl mx-auto px-6 py-10 flex flex-col sm:flex-row justify-between gap-4 text-sm text-ink/50">
+    <span>Budget Clair — Gestion de finances personnelles</span>
+    <span><a href="index.html" class="hover:text-moss transition-colors">Retour à l'accueil</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

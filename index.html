@@ -51,6 +51,7 @@
       <a href="#programme" class="hover:text-moss transition-colors">Programme</a>
       <a href="#methode" class="hover:text-moss transition-colors">Méthode</a>
       <a href="#tarifs" class="hover:text-moss transition-colors">Tarifs</a>
+      <a href="outils.html" class="hover:text-moss transition-colors">Outils</a>
       <a href="#contact" class="hover:text-moss transition-colors">Contact</a>
     </div>
     <a href="#contact" class="text-sm font-medium bg-ink text-paper px-4 py-2 rounded-full hover:bg-moss transition-colors">
@@ -72,7 +73,7 @@
     </p>
     <div class="flex flex-wrap gap-4">
       <a href="#contact" class="bg-gold text-ink font-medium px-6 py-3 rounded-full hover:bg-ink hover:text-paper transition-colors">
-        Réserver mon échange gratuit
+        Réserver un échange gratuit
       </a>
       <a href="#methode" class="border border-ink px-6 py-3 rounded-full hover:bg-ink hover:text-paper transition-colors">
         Voir la méthode
@@ -84,7 +85,8 @@
   <div x-data="{
         revenus: 2200,
         depenses: 1750,
-        get reste() { return this.revenus - this.depenses },
+        epargne: 300,
+        get reste() { return this.revenus - this.depenses - this.epargne },
         get pct() { return Math.max(0, Math.min(100, (this.reste / (this.revenus || 1)) * 100)) }
       }"
       class="bg-white border border-line rounded-2xl p-8 shadow-[0_1px_0_0_#D9DCCF]">
@@ -102,10 +104,18 @@
 
       <div>
         <div class="flex justify-between text-sm mb-2">
-          <label for="depenses">Dépenses mensuelles</label>
+          <label for="depenses">Dépenses nécéssaires</label>
           <span class="font-mono" x-text="depenses + ' €'"></span>
         </div>
         <input id="depenses" type="range" min="500" max="6000" step="50" x-model.number="depenses"
+               class="w-full accent-moss">
+      </div>
+            <div>
+        <div class="flex justify-between text-sm mb-2">
+          <label for="epargne">Épargne mensuelle</label>
+          <span class="font-mono" x-text="epargne + ' €'"></span>
+        </div>
+        <input id="epargne" type="range" min="0" max="1500" step="50" x-model.number="epargne"
                class="w-full accent-moss">
       </div>
     </div>
@@ -136,7 +146,7 @@
       <div>
         <span class="font-mono text-sm text-gold">01</span>
         <h3 class="font-display text-xl mt-3 mb-2">Échange gratuit</h3>
-        <p class="text-sm text-ink/70">15 minutes pour comprendre votre situation et vos objectifs, sans engagement.</p>
+        <p class="text-sm text-ink/70">20 minutes pour comprendre votre situation et vos objectifs, sans engagement.</p>
       </div>
       <div>
         <span class="font-mono text-sm text-gold">02</span>
@@ -207,7 +217,7 @@
   <div class="max-w-xl">
     <h2 class="font-display text-3xl mb-4">On en parle ?</h2>
     <p class="text-ink/70 mb-8">
-      Premier échange de 30 minutes, gratuit et sans engagement. Secteur Ain (Valromey et environs) ou à distance.
+      Premier échange de 20 minutes, gratuit et sans engagement
     </p>
  
     <form
